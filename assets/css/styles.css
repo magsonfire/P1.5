@@ -1,0 +1,327 @@
+/* 0.1 
+////// Colour Variables
+=================================== */
+/* Primary Palette */
+/* Links */
+/* 0.2 
+////// UI Variables
+=================================== */
+/* Animation Mixins */
+/* 0.3 
+////// Typography Variables
+=================================== */
+/* Font Weights */
+/* Font Families */
+/* 1.1 
+////// Typography
+=================================== */
+html, p, ul li, ol li, h1, h2, h3, h4, .h4_a, nav .ribbon, nav li a, nav .icon, h5, h6, li, a {
+  font-family: "Source Sans Pro", Helvetica, sans serif; }
+
+/* Headings */
+p, ul li, ol li {
+  font-weight: 400;
+  font-size: 1em;
+  letter-spacing: 0.6px;
+  line-height: 1.4;
+  padding-bottom: 1em; }
+
+h1 {
+  font-weight: 200;
+  font-size: 3em;
+  letter-spacing: 1.2px;
+  line-height: 1.2;
+  padding-top: 1.2em;
+  padding-bottom: 0.5em; }
+
+h2 {
+  font-weight: 400;
+  font-size: 1.5em;
+  letter-spacing: 1.2px;
+  line-height: 1.4;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em; }
+
+h3 {
+  font-weight: 900;
+  font-size: 0.9em;
+  letter-spacing: 1.5px;
+  line-height: 2;
+  text-transform: uppercase;
+  padding-bottom: 0.5em; }
+
+h4, .h4_a, nav .ribbon, nav li a, nav .icon {
+  font-weight: 200;
+  font-size: 24px;
+  letter-spacing: 1.2px;
+  line-height: 1.2;
+  text-transform: uppercase; }
+
+.h4_a {
+  font-weight: 600;
+  font-size: 1em; }
+
+h5 {
+  font-weight: 400;
+  font-size: 0.9em;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  padding-bottom: 0.5em; }
+
+h6 {
+  font-weight: 700;
+  font-size: 1em;
+  letter-spacing: 1.2px;
+  line-height: 1.2;
+  font-style: italic;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 30px; }
+
+/* Lists */
+ul, ol {
+  padding-bottom: 1em;
+  margin-left: 20px; }
+
+ul li {
+  padding-bottom: 0.2em;
+  list-style: disc inside; }
+
+ol li {
+  padding-bottom: 0.2em;
+  list-style: decimal inside; }
+
+li ul li {
+  list-style: circle inside; }
+
+li ol li {
+  list-style: lower-alpha inside; }
+
+/* 1.2 
+////// Structural Elements
+=================================== */
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 90px; }
+
+.wrapper {
+  margin-left: 64px;
+  padding-top: 80px;
+  padding-left: 20px;
+  padding-right: 20px; }
+
+.flex-column {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column; }
+
+/* 1.3 
+////// Links & UI
+=================================== */
+a {
+  font-weight: 700;
+  color: #7D0125;
+  text-decoration: none; }
+
+a:hover, a:focus, a:active {
+  color: #270C1B;
+  text-decoration: none;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out; }
+
+/* 1.4
+////// Header & Footer
+=================================== */
+/* Header */
+.header {
+  height: 58px;
+  width: 100%;
+  background: #270C1B;
+  border-bottom: solid 6px #7D0125;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  padding-top: 10px; }
+
+.logo-container {
+  width: 48px;
+  margin: 0 auto; }
+
+.logo {
+  height: 32px; }
+
+/* Footer */
+footer {
+  height: 90px;
+  width: 100%;
+  background: #DDD;
+  border-top: 1px solid #D89DAC;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  padding: 20px 30px 20px 94px;
+  color: black;
+  font-size: 0.8em;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  line-height: 1.5; }
+
+.copyright {
+  flex: 1; }
+
+.footer-nav {
+  flex: 1.5;
+  text-align: right; }
+  .footer-nav a {
+    font-weight: 700;
+    color: #7D0125; }
+  .footer-nav a:hover, .footer-nav a:focus {
+    color: #270C1B;
+    text-decoration: none; }
+  .footer-nav .social-l {
+    display: none;
+    background: #270C1B;
+    position: absolute;
+    right: -5px;
+    top: -28px;
+    height: 20px;
+    padding: 2px 10px 2px 10px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-weight: 400;
+    color: white; }
+    .footer-nav .social-l:after {
+      width: 0;
+      height: 0;
+      content: "";
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid #270C1B;
+      position: absolute;
+      right: 10%;
+      top: 100%; }
+  .footer-nav .social {
+    position: relative; }
+    .footer-nav .social:hover > .social-l {
+      display: block; }
+
+/* 1.5 
+////// Navbar
+=================================== */
+nav ul, nav ul li {
+  list-style: none;
+  padding: none; }
+
+nav {
+  background: #060B0C;
+  width: 48px;
+  height: 100%;
+  padding: 34px 0 0;
+  margin: 0;
+  z-index: 10;
+  position: fixed;
+  top: 50px;
+  left: 0; }
+  nav li {
+    position: relative; }
+  nav .icon {
+    height: 48px;
+    width: 48px;
+    padding: 10px 0 10px;
+    text-align: center; }
+  nav .ribbon {
+    display: block;
+    padding: 10px 0 10px 20px;
+    width: 250px;
+    position: absolute;
+    top: 0;
+    left: -206px;
+    z-index: -1;
+    background: #0E2622;
+    text-align: left;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease; }
+  nav ul {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin: 0; }
+  nav li a, nav .icon {
+    height: 48px;
+    background: #060B0C;
+    color: white;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out; }
+    nav li a:hover, nav .icon:hover {
+      background: #0E2622;
+      color: white; }
+    nav li a:hover + .ribbon, nav .icon:hover + .ribbon {
+      left: 48px; }
+
+/* 1.6 
+////// Theming
+=================================== */
+.hero {
+  width: 100%;
+  flex: 0 1 25rem;
+  background: url(../img/hero/floral_hero.jpg) center center;
+  background-size: cover; }
+  .hero:after {
+    position: absolute;
+    top: 0;
+    content: "";
+    width: 100%;
+    height: 23rem;
+    background: linear-gradient(#060B0C, #0E2622);
+    opacity: 0.5; }
+
+/* 2.1 
+////// Home
+=================================== */
+.summary {
+  width: 100%;
+  flex: 1 1 auto;
+  margin-bottom: 90px;
+  display: flex;
+  padding-left: 84px;
+  padding-top: 2.5rem; }
+
+.sum-item {
+  flex: 1; }
+
+.sum-cat {
+  color: #7D0125; }
+
+/* 2.2 
+////// About
+=================================== */
+/* 2.3 
+////// Portfolio
+=================================== */
+/* 2.4 
+////// Testimonials
+=================================== */
+/* 2.5 
+////// Contact
+=================================== */
+
+/*# sourceMappingURL=styles.css.map */
