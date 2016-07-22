@@ -74,6 +74,11 @@ $link_h_light: $lighter;
 ////// UI Variables
 =================================== */
 
+/* Media Queries */
+$medium: 1200px;
+$small: 991px;
+$xsmall: 400px;
+
 /* Animation Mixins */
 @mixin keyframes($animation-name) {
     @-webkit-keyframes #{$animation-name} {
@@ -125,6 +130,16 @@ $black: 900;
 /* Font Families */
 $main-font: 'Source Sans Pro', Helvetica, sans serif;
 
+//
+/* 0.4
+////// Theming Variables
+=================================== */
+
+/* Hero Background Image */
+$floral_hero: url(../img/hero/floral_hero.jpg);
+
+/* Page Banners */
+$page_heroes: about portfolio case contact;
 
 //// SECTIONS 1: Global Structure //////////////////////
 //
@@ -141,13 +156,29 @@ p {
 	font-weight: $regular;
 	font-size: 1em;
 	letter-spacing: 0.6px;
-	line-height: 1.4;
+	line-height: 1.5;
 	padding-bottom: 1em;
+	color: black;
+	.content {
+		padding-left: 20%;
+	}
+}
+
+b {
+	font-weight: $bold;
+}
+
+em {
+	font-style: italic;
+}
+
+u {
+	text-decoration: underline;
 }
 
 h1 {
 	font-weight: $extralight;
-	font-size: 3em;
+	font-size: 4em;
 	letter-spacing: 1.2px;
 	line-height: 1.2;
 	padding-top: 1.2em;
@@ -165,11 +196,16 @@ h2 {
 
 h3 { // For subheadings
 	font-weight: $black;
-	font-size: 0.9em;
+	font-size: 1em;
 	letter-spacing: 1.5px;
 	line-height: 2;
 	text-transform: uppercase;
 	padding-bottom: 0.5em;
+}
+
+.h3_sm { // Smaller version of h3, for Call-To-Action links
+	@extend h3;
+	font-size: 0.9em;
 }
 
 h4 { // For navbar links
@@ -210,6 +246,7 @@ h6 { // For quotes
 ul, ol {
 	padding-bottom: 1em;
 	margin-left: 20px;
+	line-height: 1.5;
 }
 
 ul li {
@@ -232,6 +269,13 @@ li ol li {
 	list-style: lower-alpha inside;
 }
 
+/* Typesetting Tools */
+hr {
+	border-bottom: $secondary 1px solid;
+	height: auto;
+	width: 80%;
+}
+
 
 //
 /* 1.2 
@@ -246,22 +290,74 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	margin-bottom: 90px;
+	// margin-bottom: 90px;
 }
 
+//Overall Wrapper on index.html, including header/footer
+#main {
+	display: flex;
+	flex-direction: column;
+}
+
+//Page injectable content
+.page {
+	flex: 1;
+	margin-bottom: 5rem;
+}
+
+//Within-page, for text, to set left/right margins
 .wrapper {	
 	margin-left: 64px;
-	padding-top: 80px;
+	padding-top: 2rem;
 	padding-left: 20px;
 	padding-right: 20px;
+	margin-bottom: 3rem;
 }
 
+//Auxiliary flex class
 .flex-column {
 	display: flex;
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
 }
+
+//Left image insert
+.left-insert {
+	background: $grey;
+	width: 400px;
+	height: 200px;
+	display: inline-block;
+	position: relative;
+	left: -84px;
+	float: left;
+	margin: 1rem -34px 1rem 0;
+	@media screen and (max-width: $small) {
+		width: 120%;
+		left: 20px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+//Right image insert
+.right-insert {
+	background: $grey;
+	width: 400px;
+	height: 200px;
+	display: inline-block;
+	position: relative;
+	right: -20px;
+	float: right;
+	margin: 1rem 0 1rem 1rem;
+	@media screen and (max-width: $small) {
+		width: 120%;
+		left: 20px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
 
 //
 /* 1.3 
@@ -279,6 +375,29 @@ a:hover, a:focus, a:active {
 	@include transition(all 0.4s ease-in-out)
 }
 
+button {
+	border: none;
+	background: none;
+	padding: 0.8rem 2rem 0.8rem 2rem;
+	//Type
+	@extend h5;
+	font-weight: $bold;
+}
+
+button {
+	//Clear default, assign padding, typography
+	border: none;
+	background: none;
+	padding: 1rem 2rem 1rem 2rem;
+	//Type
+	@extend h5;
+	font-weight: $bold;
+}
+
+.readmore {
+	text-align: right;
+}
+
 //
 /* 1.4
 ////// Header & Footer
@@ -288,30 +407,38 @@ a:hover, a:focus, a:active {
 
 .header {
 	height: 58px;
-	width: 100%;
+	width: 58px;
 	background: $primary-dark;
 	border-bottom: solid 6px $primary;
 	display: block;
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 9;
-	padding-top: 10px;
+	z-index: 10;
+	&:hover {
+		background: $primary;
+	}
+	@media screen and (max-width: $small) {
+		width: 100%;
+	}
 }
 
 .logo-container {
 	width: 48px;
 	margin: 0 auto;
+	text-align: center;
+	padding: 10px 0 10px;
 }
 
 .logo {
-	height: 32px;
+	display: inline-block;
+	height: 38px;
 }
 
 /* Footer */
 footer {
 	// Layout
-	height: 90px;
+	height: 64px;
 	width: 100%;
 	background: $light-grey;
 	border-top: 1px solid $lighter;
@@ -321,17 +448,24 @@ footer {
 	bottom: 0;
 	// Structure
 	display: flex;
-	padding: 20px 30px 20px 94px;
+	padding-left: 94px;
+	padding-top: 1rem;
+	padding-right: 30px;
 	// Typography
 	color: black;
-	font-size: 0.8em;
+	font-size: 0.8rem;
 	font-weight: $regular;
 	letter-spacing: 1.2px;
 	line-height: 1.5;
+	@media screen and (max-width: $xsmall) {
+		padding-left: 20%;
+		padding-right: 5%;
+		height: 90px;
+	}
 }
 
 .copyright {
-	flex: 1;
+	flex: 2;
 }
 
 .footer-nav {
@@ -345,6 +479,9 @@ footer {
 	a:hover, a:focus {
 	color: $link_h;
 	text-decoration: none;
+	}
+	@media screen and (max-width: $xsmall) {
+		flex: 2
 	}
 
 	.social-l{
@@ -394,25 +531,44 @@ nav {
 	// Layout
 	background: $secondary-dark;
 	// Structure
-	width: 48px;
+	width: 58px;
 	height: 100%;
 	padding: 34px 0 0;
 	margin: 0;
 	z-index: 10;
-	li {
-		position: relative;
-	}
 	// Position
 	position: fixed;
-	top: 50px;
+	margin-top: 58px;
 	left: 0;
+	@media screen and (max-width: $small) {
+		width: 100%;
+		height: 58px;
+		margin-top: 0;
+		position: fixed;
+		bottom: 0;
+		padding-top: 0;
+		li {
+			width: 58px;
+			display: inline-block;
+			flex: 1;
+			padding: 0;
+		}
+	}
+
 	// Icons
 	.icon {
 		height: 48px;
-		width: 48px;
+		width: 100%;
 		padding: 10px 0 10px;
 		text-align: center;
+		margin: 0 auto;
+		@media screen and (max-width: $small) {
+			width: 100%;
+			height: 60px;
+			padding-bottom: 0;
+		} 
 	}
+
 	// Ribbons
 	.ribbon {
 		@extend h4;
@@ -425,29 +581,64 @@ nav {
 		z-index: -1;
 		background: $secondary;
 		text-align: left;
-		@include transition(all 1s ease);
+		@include transition(all 0.4s ease);
+		&:hover {
+			left: 48px;
+			background: $secondary;
+		}
+		&:hover +.icon {
+			background: $secondary;
+		}
+		@media screen and (max-width: $small) {
+			display: none;
+		} 
 	}
+
 	ul {
 		height: auto;
 		width: 100%;
 		padding: 0;
 		margin: 0;
+		@media screen and (max-width: $small) {
+			height: 60px;
+			margin: 0 auto;
+			display: flex;
+		} 
 	}
+
 	// Button & Typeface
-	li a, .icon {
+	li a, .icon, .ribbon {
 		height: 48px;
 		background: $secondary-dark;
 		color: white;
 		@extend h4;
-		&:hover {
+		&:hover, &:active {
 			background: $secondary;
 			color: white;
 		}
-		&:hover + .ribbon {
+		&:hover +.ribbon {
 			left: 48px;
+			background: $secondary;
 		}
-		@include transition(all 0.4s ease-in-out);
+		@include transition(all 0.4s ease);
+		@media screen and (max-width: $small) {
+			height: 60px;
+		}
 	}
+
+	.mobile-label {
+		font-size: 0.8rem;
+		font-weight: $extralight;
+		padding: none;
+		margin: none;
+		color: white;
+		display: none;
+		margin-top: -20px;
+		text-align: center;
+		@media screen and (max-width: $small) {
+			display: block;
+		}
+	} 
 }
 
 //
@@ -458,17 +649,62 @@ nav {
 .hero {
 	// Structural
 	width: 100%;
-	flex: 0 1 25rem;
-	background: url(../img/hero/floral_hero.jpg) center center;
+	flex: 1 1 15rem;
+	position: relative;
+	// For Greeting Within (Center Align)
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	// Background
+	background: $floral_hero center center;
 	background-size: cover;
-	&:after {
+	&:before {
 		position: absolute;
 		top: 0;
 		content: "";
 		width: 100%;
-		height: 23rem;
+		height: 90%;
 		background: $grad;
 		opacity: 0.5;
+	}
+	@media screen and (max-width: $small) {
+		flex: 1 1 18rem;
+	}
+}
+
+//Page banner
+@each $page in $page_heroes {
+	.pbanner-#{$page} {
+		width: 100%;
+		height: 20rem;
+		position: relative;
+		// Background
+		background: url("../img/hero/#{$page}_hero.jpg");
+		background-size: cover;
+		//Font
+		color: white;
+		&:before {
+			position: absolute;
+			top: 0;
+			content: "";
+			width: 100%;
+			height: 90%;
+			background: $grad;
+			opacity: 0.5;
+		}
+	}
+}
+
+//Page Title
+.ptitle {
+	position: absolute;
+	bottom: 10%;
+	text-align: center;
+	margin-left: 64px;
+	padding-left: 20px;
+	padding-right: 20px;
+	h1 {
+		padding: 0;
 	}
 }
 
@@ -478,38 +714,164 @@ nav {
 /* 2.1 
 ////// Home
 =================================== */
+// Page Container
+.home {
+	height: 100%;
+	width: 100%;
+}
+
+// Hero Greeting Overlay
+.greeting {
+	// Positioning
+	display: block;
+	flex: 1 1 15rem;
+	// Z-Axis Positioning
+	z-index: 9;
+	// Text & Padding
+	color: white;
+	// Sizing (important for mobile)
+	box-sizing: border-box;
+	// Text Positioning & Style
+	position: relative;
+	width: 50%;
+	.hello {
+		font-size: 4rem;
+		font-weight: $extralight;
+	}
+	.goodbye {
+		font-size: 1.5rem;
+		font-weight: $extralight;
+	}
+	.text {
+		position: absolute;
+		line-height: 1.2;
+		bottom: 25%;
+	}
+	@media screen and (max-width: $medium) {
+		width: 80%;
+		padding-left: 15%;
+		.text {
+			bottom: 25%;
+		}
+	}
+	@media screen and (max-width: $small) {
+		width: 90%;
+		padding-left: 20%;
+		.hello {
+			font-size: 3rem;
+		}
+		.goodbye {
+			font-size: 1.5rem;
+		}
+		.text {
+			bottom: 20%;
+		}
+	}
+}
+
 // Summary Tiles
 .summary {
 	// Structural
 	width: 100%;
-	flex: 1 1 auto;
-	margin-bottom: 90px;
-	display: flex;
+	flex: 0 1;
+	//For footer: margin-bottom: 90px;
 	// background: orange;
-	padding-left: 84px;
+	padding-left: 52px;
 	padding-top: 2.5rem;
+	// Text
+	color: $secondary-dark;
+	@media screen and (max-width: $small) {
+		padding-left: 20%;
+	}
+}
+
+.sum-icon {
+ 	font-size: 1.5rem;
+ 	color: $primary;
 }
 
 .sum-item {
-	flex: 1;
+	display: flex;
+	flex-direction: column;
+	font-size: 1rem;
+	line-height: 1.3;
+	padding-left: 5%;
+	position: relative;
+	ul {
+		padding-left: 0.5rem;
+	}
+	@media screen and (max-width: $medium) {
+		margin-bottom: 2rem;
+		padding-left: 10%;
+	}
+	@media screen and (max-width: $small) {
+		padding-left: 5%;
+	}
 }
-
 
 .sum-cat {
-	color: $primary;
+	color: $secondary-dark;
+	margin-bottom: 1rem;
+	height: auto;
 }
 
+.sum-cta {
+	width: 100%;
+	flex: 0 0 auto;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	box-sizing: border-box;
+	@media screen and (max-width: $small) {
+		display: none;
+	}
+}
+
+//Spacer for content
+.home-content {
+	margin-bottom: 3rem;
+}
+
+// Footer to replace CTA
+.home-footer {
+	@media screen and (min-width: $medium) {
+		display: none;
+	}
+}
 
 //
 /* 2.2 
 ////// About
 =================================== */
-
+.pbanner-about {
+	background-position: 20% 10%;
+}
 
 //
 /* 2.3 
 ////// Portfolio
 =================================== */
+.pbanner-portfolio {
+	background-position: 0 60%;
+}
+
+/* Mix-It-UP */
+// Categories
+.port-cat {
+	// Button styling
+	background: white;
+	border: 1px solid $primary;
+	// Button spacing
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+	// Text styling
+	text-align: center;
+	color: $primary;
+	&:hover {
+		background: $primary;
+		color: white;
+		@include transition(all 0.4s ease);
+	}
+}
 
 
 //
